@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://d0isrspvp35fo"]
+
+[ext_resource type="Texture2D" uid="uid://isfogqdb8ndo" path="res://assets/placeholder.png" id="1_3vyb7"]
+
+[sub_resource type="GDScript" id="GDScript_u8vuu"]
+script/source = "extends Node2D
+
+@onready var sprite: Sprite2D = $Sprite2D
+
+var is_moving: bool = false
+
+func can_move() -> void:
+	is_moving = false
+
+func _physics_process(delta: float) -> void:
+	
+	if is_moving: return
+	#var direction: Vector2 = Input.get_vector(\"move_left\", \"move_right\", \"move_up\", \"move_down\")
+	var direction: Vector2 = Vector2.ZERO
+	if Input.is_action_pressed(\"move_left\"):
+		direction = Vector2(-1, 0)
+		sprite.rotation = PI/2
+	elif Input.is_action_pressed(\"move_right\"):
+		direction = Vector2(1, 0)
+		sprite.rotation = (3 * PI) / 2
+	elif Input.is_action_pressed(\"move_down\"):
+		direction = Vector2(0, 1)
+		sprite.rotation = 0
+	elif Input.is_action_pressed(\"move_up\"):
+		direction = Vector2(0, -1)
+		sprite.rotation = PI
+	SignalBus.PLAYER_MOVED.emit(direction)
+	direction *= constants.GRID_SIZE
+	
+	if not direction: return
+	
+	is_moving = true
+	var tween: Tween = get_tree().create_tween()
+	tween.tween_property(self, \"position\", self.position + direction, 0.15)
+	tween.tween_callback(can_move)
+"
+
+[node name="Player" type="Node2D" unique_id=1441763233]
+script = SubResource("GDScript_u8vuu")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1808420213]
+texture = ExtResource("1_3vyb7")

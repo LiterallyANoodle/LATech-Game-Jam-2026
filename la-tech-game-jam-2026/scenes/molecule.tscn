@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://kvnaqi8rxqgd"]
+
+[ext_resource type="Script" uid="uid://dnegj76nvp1g" path="res://scenes/molecule.gd" id="1_hapxn"]
+[ext_resource type="Texture2D" uid="uid://b7c223lu1vv3f" path="res://assets/poopy_atom.png" id="1_pio7g"]
+
+[node name="Molecule" type="Node2D" unique_id=493506247]
+script = ExtResource("1_hapxn")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=385561697]
+texture = ExtResource("1_pio7g")
