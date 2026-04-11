@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bwwb7mvupeo0a"]
+
+[ext_resource type="Texture2D" uid="uid://cn0pqhou82d4" path="res://assets/ponyville 6 x 1.png" id="1_7hgrq"]
+
+[node name="Visual Timer" type="Node2D" unique_id=1255700071]
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1837721210]
+texture = ExtResource("1_7hgrq")
+centered = false
