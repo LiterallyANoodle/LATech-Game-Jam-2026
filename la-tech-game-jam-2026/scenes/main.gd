@@ -24,6 +24,17 @@ func generate_target_shape() -> void:
 		pos += dirs.pick_random()
 		target_shape[pos] = elements.pick_random()
 
+func test_shape() -> bool:
+	var correct: bool = true
+	for key: Vector2 in target_shape.keys():
+		if not molecules.has(key):
+			correct = false
+			break
+		if not molecules[key].element == target_shape[key]:
+			correct = false
+			break
+	return correct
+
 func spawn_target() -> void:
 	for k: Vector2 in target_shape.keys():
 		spawn_molecule(k, target_shape[k])
