@@ -196,7 +196,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Visual Timer" type="SubViewport" unique_id=814804553]
+[node name="Visual Timer" type="SubViewport" unique_id=1004787294]
 size = Vector2i(5474, 912)
 script = ExtResource("1_asw63")
 

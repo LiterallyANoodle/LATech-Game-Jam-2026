@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cg2ovpubc2twy"]
+
+[ext_resource type="PackedScene" uid="uid://bwwb7mvupeo0a" path="res://scenes/visual_timer.tscn" id="1_a0cjt"]
+
+[node name="Visual Timer Test" type="SubViewportContainer" unique_id=269053939]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2161.0
+offset_top = -132.0
+offset_right = 2161.0
+offset_bottom = 132.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Visual Timer" parent="." unique_id=814804553 instance=ExtResource("1_a0cjt")]
+handle_input_locally = false
+render_target_update_mode = 4
