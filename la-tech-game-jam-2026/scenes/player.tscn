@@ -12,41 +12,50 @@ script/source = "extends Node2D
 @onready var sprite_up: Sprite2D = $SpriteUp
 
 var is_moving: bool = false
+var move_buffer: Vector2 = Vector2.ZERO
 
 func can_move() -> void:
 	is_moving = false
 
 func _physics_process(delta: float) -> void:
 	
-	if is_moving: return
-	#var direction: Vector2 = Input.get_vector(\"move_left\", \"move_right\", \"move_up\", \"move_down\")
 	var direction: Vector2 = Vector2.ZERO
 	if Input.is_action_pressed(\"move_left\"):
-		direction = Vector2(-1, 0)
+		direction = Vector2.LEFT
+	elif Input.is_action_pressed(\"move_right\"):
+		direction = Vector2.RIGHT
+	elif Input.is_action_pressed(\"move_down\"):
+		direction = Vector2.DOWN
+	elif Input.is_action_pressed(\"move_up\"):
+		direction = Vector2.UP
+	
+	if is_moving:
+		move_buffer = direction
+		return
+	
+	if move_buffer != Vector2.ZERO:
+		direction = move_buffer
+		move_buffer = Vector2.ZERO
+	
+	if direction == Vector2.LEFT:
 		sprite_h.flip_h = false
 		sprite_h.visible = true
 		sprite_up.visible = false
 		sprite_down.visible = false
-		#sprite.rotation = PI/2
-	elif Input.is_action_pressed(\"move_right\"):
-		direction = Vector2(1, 0)
+	if direction == Vector2.RIGHT:
 		sprite_h.flip_h = true
 		sprite_h.visible = true
 		sprite_up.visible = false
 		sprite_down.visible = false
-		#sprite.rotation = (3 * PI) / 2
-	elif Input.is_action_pressed(\"move_down\"):
-		direction = Vector2(0, 1)
+	if direction == Vector2.DOWN:
 		sprite_h.visible = false
 		sprite_up.visible = false
 		sprite_down.visible = true
-		#sprite.rotation = 0
-	elif Input.is_action_pressed(\"move_up\"):
-		direction = Vector2(0, -1)
+	if direction == Vector2.UP:
 		sprite_h.visible = false
 		sprite_up.visible = true
 		sprite_down.visible = false
-		#sprite.rotation = PI
+	
 	SignalBus.PLAYER_MOVED.emit(direction)
 	direction *= constants.GRID_SIZE
 	
@@ -56,7 +65,7 @@ func _physics_process(delta: float) -> void:
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_property(self, \"position\", self.position + direction, 0.15) \\
 		.set_trans(Tween.TRANS_CUBIC)
-	tween.tween_interval(0.1)
+	#tween.tween_interval(0.1)
 	tween.tween_callback(can_move)
 "
 
