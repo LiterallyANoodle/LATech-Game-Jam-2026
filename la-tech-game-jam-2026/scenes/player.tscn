@@ -63,7 +63,7 @@ func _physics_process(delta: float) -> void:
 	
 	is_moving = true
 	var tween: Tween = get_tree().create_tween()
-	tween.tween_property(self, \"position\", self.position + direction, 0.15) \\
+	tween.tween_property(self, \"position\", self.position + direction, constants.MOVE_TIME) \\
 		.set_trans(Tween.TRANS_CUBIC)
 	#tween.tween_interval(0.1)
 	tween.tween_callback(can_move)
