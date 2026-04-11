@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://bwwb7mvupeo0a"]
 
 [ext_resource type="Texture2D" uid="uid://cn0pqhou82d4" path="res://assets/ponyville 6 x 1.png" id="1_7hgrq"]
+[ext_resource type="Script" uid="uid://fa1gocsbubik" path="res://scenes/visual_timer.gd" id="1_asw63"]
 [ext_resource type="Texture2D" uid="uid://dll8rlbv406ao" path="res://assets/Wizard.png" id="2_wmlh5"]
+[ext_resource type="Texture2D" uid="uid://6tf833ropmat" path="res://assets/Enemy.png" id="4_ejbq2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wmlh5"]
 atlas = ExtResource("2_wmlh5")
@@ -130,7 +132,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Curve2D" id="Curve2D_76pxr"]
+
 [node name="Visual Timer" type="Node2D" unique_id=1255700071]
+script = ExtResource("1_asw63")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1837721210]
 texture = ExtResource("1_7hgrq")
@@ -141,3 +146,14 @@ position = Vector2(412, 529)
 scale = Vector2(9, 9)
 sprite_frames = SubResource("SpriteFrames_u1evc")
 frame_progress = 0.62530214
+
+[node name="Timer" type="Timer" parent="." unique_id=1285561132]
+
+[node name="Path2D" type="Path2D" parent="." unique_id=1249391977]
+curve = SubResource("Curve2D_76pxr")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=821647614]
+
+[node name="Demon" type="Sprite2D" parent="Path2D/PathFollow2D" unique_id=1262935701]
+position = Vector2(1079, 606)
+texture = ExtResource("4_ejbq2")
