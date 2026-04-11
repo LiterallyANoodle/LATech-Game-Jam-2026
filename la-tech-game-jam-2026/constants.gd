@@ -4,7 +4,7 @@ extends Node
 const GRID_SIZE: int = 64
 
 # How long it takes for player/blocks to move one grid tile
-const MOVE_TIME: float = 0.10
+const MOVE_TIME: float = 0.2
 
 # Atom textures
 @onready var air_tex: AtlasTexture = AtlasTexture.new()
