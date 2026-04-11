@@ -22,6 +22,7 @@ func _process(delta: float) -> void:
 		
 func explode_enemy() -> void:
 	explosion.global_position = demon.global_position
+	timer.start()
 	explosion.visible = true
 	explosion.set_frame(0)
 	explosion.play()
