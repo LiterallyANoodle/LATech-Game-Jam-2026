@@ -325,7 +325,9 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Visual Timer" type="Node2D" unique_id=756566392]
+[node name="Visual Timer" type="SubViewport" unique_id=1506953770]
+canvas_item_default_texture_filter = 0
+size = Vector2i(5474, 912)
 script = ExtResource("1_asw63")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1837721210]

@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://bd1ovg5184k3m"]
+
+[ext_resource type="PackedScene" uid="uid://bwwb7mvupeo0a" path="res://scenes/visual_timer.tscn" id="1_2blu7"]
+
+[node name="Game Window" type="CanvasLayer" unique_id=1122543920]
+
+[node name="HBox" type="HBoxContainer" parent="." unique_id=2035014381]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Left Panel" type="VBoxContainer" parent="HBox" unique_id=1321346484]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="Panel" type="Panel" parent="HBox/Left Panel" unique_id=1567622629]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Panel2" type="Panel" parent="HBox/Left Panel" unique_id=1690341314]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Right Panel" type="VBoxContainer" parent="HBox" unique_id=1295158918]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="HBox/Right Panel" unique_id=1038956649]
+layout_mode = 2
+size_flags_vertical = 3
+ratio = 6.0
+
+[node name="Visual Timer Box" type="SubViewportContainer" parent="HBox/Right Panel/AspectRatioContainer" unique_id=1983571336]
+layout_mode = 2
+size_flags_vertical = 3
+stretch = true
+
+[node name="Visual Timer" parent="HBox/Right Panel/AspectRatioContainer/Visual Timer Box" unique_id=1506953770 instance=ExtResource("1_2blu7")]
+handle_input_locally = false
+size = Vector2i(861, 143)
+size_2d_override = Vector2i(5474, 912)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="Play Area" type="SubViewportContainer" parent="HBox/Right Panel" unique_id=29970111]
+layout_mode = 2
+size_flags_vertical = 3

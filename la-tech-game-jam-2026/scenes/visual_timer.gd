@@ -1,4 +1,4 @@
-extends Node2D
+extends SubViewport
 
 @onready var timer: Timer = $Timer
 @onready var demon_follower: PathFollow2D = $Path2D/PathFollow2D
