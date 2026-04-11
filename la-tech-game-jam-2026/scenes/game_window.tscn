@@ -12,10 +12,12 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/separation = 0
 
 [node name="Left Panel" type="VBoxContainer" parent="HBox" unique_id=1321346484]
 layout_mode = 2
-size_flags_horizontal = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
 
 [node name="Panel" type="Panel" parent="HBox/Left Panel" unique_id=1567622629]
 layout_mode = 2
@@ -29,6 +31,7 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
+theme_override_constants/separation = 0
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="HBox/Right Panel" unique_id=1038956649]
 layout_mode = 2
@@ -42,7 +45,7 @@ stretch = true
 
 [node name="Visual Timer" parent="HBox/Right Panel/AspectRatioContainer/Visual Timer Box" unique_id=1506953770 instance=ExtResource("1_2blu7")]
 handle_input_locally = false
-size = Vector2i(861, 143)
+size = Vector2i(864, 144)
 size_2d_override = Vector2i(5474, 912)
 size_2d_override_stretch = true
 render_target_update_mode = 4
@@ -50,3 +53,4 @@ render_target_update_mode = 4
 [node name="Play Area" type="SubViewportContainer" parent="HBox/Right Panel" unique_id=29970111]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 3.32
