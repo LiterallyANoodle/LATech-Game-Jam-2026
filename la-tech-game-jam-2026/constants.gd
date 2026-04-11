@@ -6,6 +6,8 @@ const GRID_SIZE: int = 64
 # How long it takes for player/blocks to move one grid tile
 const MOVE_TIME: float = 0.2
 
+const ROUND_TIME: float = 30.0
+
 # Atom textures
 @onready var air_tex: AtlasTexture = AtlasTexture.new()
 @onready var fire_tex: AtlasTexture = AtlasTexture.new()

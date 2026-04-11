@@ -1,10 +1,10 @@
-extends Node2D
+extends SubViewport
 
-@onready timer: Timer = $Timer
-@onready demon_follower: PathFollow2D = $Path2D/PathFollow2D
+@onready var timer: Timer = $Timer
+@onready var demon_follower: PathFollow2D = $Path2D/PathFollow2D
 
 func _ready() -> void:
 	pass
 
 func _process(delta: float) -> void:
-	pass
+	demon_follower.progress_ratio = 1 - (timer.time_left / constants.ROUND_TIME)

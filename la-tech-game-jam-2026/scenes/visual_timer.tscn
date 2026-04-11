@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://fa1gocsbubik" path="res://scenes/visual_timer.gd" id="1_asw63"]
 [ext_resource type="Texture2D" uid="uid://dll8rlbv406ao" path="res://assets/Wizard.png" id="2_wmlh5"]
 [ext_resource type="Texture2D" uid="uid://6tf833ropmat" path="res://assets/Enemy.png" id="4_ejbq2"]
+[ext_resource type="Texture2D" uid="uid://cr6nmjlqmwm6v" path="res://assets/Crystal Ball.png" id="5_76pxr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wmlh5"]
 atlas = ExtResource("2_wmlh5")
@@ -138,7 +139,65 @@ _data = {
 }
 point_count = 2
 
-[node name="Visual Timer" type="Node2D" unique_id=1255700071]
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1evc"]
+atlas = ExtResource("5_76pxr")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5prm"]
+atlas = ExtResource("5_76pxr")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0oye1"]
+atlas = ExtResource("5_76pxr")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxr0y"]
+atlas = ExtResource("5_76pxr")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7yp5"]
+atlas = ExtResource("5_76pxr")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1ino"]
+atlas = ExtResource("5_76pxr")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhpm8"]
+atlas = ExtResource("5_76pxr")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_73s5r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1evc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5prm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0oye1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wxr0y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7yp5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1ino")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mhpm8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Visual Timer" type="SubViewport" unique_id=814804553]
+size = Vector2i(5474, 912)
 script = ExtResource("1_asw63")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1837721210]
@@ -149,9 +208,12 @@ centered = false
 position = Vector2(412, 529)
 scale = Vector2(9, 9)
 sprite_frames = SubResource("SpriteFrames_u1evc")
-frame_progress = 0.62530214
+autoplay = "default"
+speed_scale = 2.0
 
 [node name="Timer" type="Timer" parent="." unique_id=1285561132]
+wait_time = 30.0
+autostart = true
 
 [node name="Path2D" type="Path2D" parent="." unique_id=1249391977]
 position = Vector2(1120, 575)
@@ -162,5 +224,13 @@ position = Vector2(4800, 0)
 rotation = 3.1415927
 
 [node name="Demon" type="Sprite2D" parent="Path2D/PathFollow2D" unique_id=1262935701]
+rotation = 3.1415927
 scale = Vector2(9, 9)
 texture = ExtResource("4_ejbq2")
+
+[node name="Orb" type="AnimatedSprite2D" parent="." unique_id=836735779]
+position = Vector2(753, 579)
+scale = Vector2(9, 9)
+sprite_frames = SubResource("SpriteFrames_73s5r")
+autoplay = "default"
+frame_progress = 0.34815148
