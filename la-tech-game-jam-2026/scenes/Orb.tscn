@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://bgna5n2fpmdev"]
+
+[ext_resource type="Texture2D" uid="uid://cr6nmjlqmwm6v" path="res://assets/Crystal Ball.png" id="1_2pvil"]
+
+[sub_resource type="GDScript" id="GDScript_2pvil"]
+script/source = "extends Node2D
+
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+
+func _ready() -> void:
+	sprite.play(\"swoosh\")
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x580g"]
+atlas = ExtResource("1_2pvil")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16fcm"]
+atlas = ExtResource("1_2pvil")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srlfe"]
+atlas = ExtResource("1_2pvil")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5oftt"]
+atlas = ExtResource("1_2pvil")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1h1pr"]
+atlas = ExtResource("1_2pvil")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yybd5"]
+atlas = ExtResource("1_2pvil")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfxhn"]
+atlas = ExtResource("1_2pvil")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7wm18"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x580g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16fcm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_srlfe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5oftt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1h1pr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yybd5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vfxhn")
+}],
+"loop": true,
+"name": &"swoosh",
+"speed": 8.0
+}]
+
+[node name="Orb" type="Node2D" unique_id=1171209674]
+script = SubResource("GDScript_2pvil")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1308991632]
+sprite_frames = SubResource("SpriteFrames_7wm18")
+animation = &"swoosh"
+frame_progress = 0.13342102
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=511390937]
+zoom = Vector2(2, 2)
