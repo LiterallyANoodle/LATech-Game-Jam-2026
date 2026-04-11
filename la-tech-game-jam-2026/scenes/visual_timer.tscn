@@ -343,8 +343,6 @@ autoplay = "default"
 speed_scale = 2.0
 
 [node name="Timer" type="Timer" parent="." unique_id=1285561132]
-wait_time = 30.0
-autostart = true
 
 [node name="Path2D" type="Path2D" parent="." unique_id=1249391977]
 position = Vector2(1120, 575)

@@ -5,7 +5,8 @@ extends SubViewport
 @onready var demon: Sprite2D = $Path2D/PathFollow2D/Demon
 @onready var explosion: AnimatedSprite2D = $Explosion
 @onready var boom: AudioStreamPlayer = $Boom
-@onready var wizard: Sprite2D = $Wizard
+@onready var wizard: AnimatedSprite2D = $Wizard
+@onready var orb: AnimatedSprite2D = $Orb
 
 @onready var progress_ratio: float = 0.0
 
@@ -14,6 +15,8 @@ extends SubViewport
 
 func _ready() -> void:
 	explosion.visible = false
+	timer.wait_time = constants.ROUND_TIME
+	timer.start()
 
 func _process(delta: float) -> void:
 	progress_ratio = 1 - (timer.time_left / constants.ROUND_TIME)
@@ -33,6 +36,8 @@ func explode_enemy() -> void:
 func explode_wizard() -> void:
 	explosion.global_position = wizard.global_position
 	timer.stop()
+	wizard.visible = false
+	orb.visible = false
 	explosion.visible = true
 	explosion.set_frame(0)
 	explosion.play()
