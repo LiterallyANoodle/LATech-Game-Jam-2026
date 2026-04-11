@@ -133,6 +133,10 @@ animations = [{
 }]
 
 [sub_resource type="Curve2D" id="Curve2D_76pxr"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 4800, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 2
 
 [node name="Visual Timer" type="Node2D" unique_id=1255700071]
 script = ExtResource("1_asw63")
@@ -150,10 +154,13 @@ frame_progress = 0.62530214
 [node name="Timer" type="Timer" parent="." unique_id=1285561132]
 
 [node name="Path2D" type="Path2D" parent="." unique_id=1249391977]
+position = Vector2(1120, 575)
 curve = SubResource("Curve2D_76pxr")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=821647614]
+position = Vector2(4800, 0)
+rotation = 3.1415927
 
 [node name="Demon" type="Sprite2D" parent="Path2D/PathFollow2D" unique_id=1262935701]
-position = Vector2(1079, 606)
+scale = Vector2(9, 9)
 texture = ExtResource("4_ejbq2")
