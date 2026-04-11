@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://d0isrspvp35fo" path="res://scenes/player.tscn" id="1_elqb8"]
 [ext_resource type="Script" uid="uid://l1d8mran7vpv" path="res://scenes/main.gd" id="1_rvslj"]
-[ext_resource type="Script" uid="uid://dw6p5rmvhftdt" path="res://scenes/panel_container.gd" id="3_0bbpv"]
 [ext_resource type="Script" uid="uid://uywxyrurhf00" path="res://scenes/rich_text_label.gd" id="4_rarhs"]
 [ext_resource type="PackedScene" path="res://scenes/cast_button.tscn" id="5_vcsgt"]
 
@@ -14,11 +13,6 @@ script = ExtResource("1_rvslj")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1256584762]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=816505806]
-
-[node name="AspectPanelContainer" type="PanelContainer" parent="CanvasLayer" unique_id=1457375074]
-offset_right = 176.0
-offset_bottom = 646.0
-script = ExtResource("3_0bbpv")
 
 [node name="LogPanelContainer" type="PanelContainer" parent="CanvasLayer" unique_id=1609054408]
 offset_left = 835.0

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="LATechGameJam2026"
-run/main_scene="uid://cayu18wmvepsd"
+run/main_scene="uid://bd1ovg5184k3m"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
