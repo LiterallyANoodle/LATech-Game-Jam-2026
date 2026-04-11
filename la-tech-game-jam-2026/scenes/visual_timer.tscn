@@ -329,6 +329,7 @@ animations = [{
 canvas_item_default_texture_filter = 0
 size = Vector2i(5474, 912)
 script = ExtResource("1_asw63")
+bounce_height = 250.0
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1837721210]
 texture = ExtResource("1_7hgrq")
@@ -375,4 +376,5 @@ frame_progress = 1.0
 stream = ExtResource("7_olnnd")
 volume_db = -12.0
 
+[connection signal="timeout" from="Timer" to="." method="_on_timer_expire"]
 [connection signal="animation_finished" from="Explosion" to="." method="_on_explode_done"]

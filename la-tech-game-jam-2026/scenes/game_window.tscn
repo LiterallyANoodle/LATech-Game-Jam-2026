@@ -1,6 +1,13 @@
 [gd_scene format=3 uid="uid://bd1ovg5184k3m"]
 
 [ext_resource type="PackedScene" uid="uid://bwwb7mvupeo0a" path="res://scenes/visual_timer.tscn" id="1_2blu7"]
+[ext_resource type="Theme" uid="uid://n67r03x14rl8" path="res://scenes/theme.tres" id="1_wyien"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5snyb"]
+bg_color = Color(0.73192763, 0.71364886, 0.8549257, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xqmpp"]
+bg_color = Color(0.14117648, 0.5294118, 0.3529412, 1)
 
 [node name="Game Window" type="CanvasLayer" unique_id=1122543920]
 
@@ -22,10 +29,28 @@ theme_override_constants/separation = 0
 [node name="Panel" type="Panel" parent="HBox/Left Panel" unique_id=1567622629]
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("1_wyien")
+theme_override_styles/panel = SubResource("StyleBoxFlat_5snyb")
 
-[node name="Panel2" type="Panel" parent="HBox/Left Panel" unique_id=1690341314]
+[node name="Combos" type="Panel" parent="HBox/Left Panel" unique_id=1690341314]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_xqmpp")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBox/Left Panel/Combos" unique_id=415025116]
+layout_mode = 0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBox/Left Panel/Combos/MarginContainer" unique_id=155958383]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBox/Left Panel/Combos/MarginContainer/VBoxContainer" unique_id=1102403909]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBox/Left Panel/Combos/MarginContainer/VBoxContainer" unique_id=1488390253]
+layout_mode = 2
+text = "Aspect Combos:"
 
 [node name="Right Panel" type="VBoxContainer" parent="HBox" unique_id=1295158918]
 layout_mode = 2
@@ -36,6 +61,7 @@ theme_override_constants/separation = 0
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="HBox/Right Panel" unique_id=1038956649]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 0.29
 ratio = 6.0
 
 [node name="Visual Timer Box" type="SubViewportContainer" parent="HBox/Right Panel/AspectRatioContainer" unique_id=1983571336]
@@ -53,4 +79,3 @@ render_target_update_mode = 4
 [node name="Play Area" type="SubViewportContainer" parent="HBox/Right Panel" unique_id=29970111]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 3.32

@@ -5,6 +5,7 @@ extends SubViewport
 @onready var demon: Sprite2D = $Path2D/PathFollow2D/Demon
 @onready var explosion: AnimatedSprite2D = $Explosion
 @onready var boom: AudioStreamPlayer = $Boom
+@onready var wizard: Sprite2D = $Wizard
 
 @onready var progress_ratio: float = 0.0
 
@@ -29,5 +30,17 @@ func explode_enemy() -> void:
 	boom.seek(0.0)
 	boom.play()
 	
+func explode_wizard() -> void:
+	explosion.global_position = wizard.global_position
+	timer.stop()
+	explosion.visible = true
+	explosion.set_frame(0)
+	explosion.play()
+	boom.seek(0.0)
+	boom.play()
+	
 func _on_explode_done() -> void:
 	explosion.visible = false
+	
+func _on_timer_expire() -> void:
+	explode_wizard()
