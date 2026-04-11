@@ -4,13 +4,15 @@ var molecule_scene: PackedScene = preload("res://scenes/molecule.tscn")
 var molecules: Dictionary
 var target_shape: Dictionary
 # Player's position in GRID COORDINATES
-var player_position: Vector2 = Vector2.ZERO
+var player_position: Vector2 = Vector2(-4, 0)
+var cast_button_position: Vector2 = Vector2(0, -4)
 
 const dirs: Array = [Vector2.UP, Vector2.DOWN, Vector2.LEFT, Vector2.RIGHT]
 const neighborhood: Array = [Vector2.UP, Vector2.DOWN, Vector2.LEFT, Vector2.RIGHT, Vector2.ZERO]
 const elements: Array = ["earth", "air", "fire", "water"]
 
 @onready var player: Node2D = $Player
+@onready var cast_button: Node2D = $CastButton
 
 # Transforms GRID COORDINATES to WORLD COORDINATES
 func coord_to_position(coord: Vector2) -> Vector2:
@@ -34,6 +36,11 @@ func test_shape() -> bool:
 			correct = false
 			break
 	return correct
+
+func clear_molecules() -> void:
+	for key: Vector2 in molecules:
+		molecules[key].free()
+	molecules.clear()
 
 func spawn_target() -> void:
 	for k: Vector2 in target_shape.keys():
@@ -60,6 +67,12 @@ func player_moved(direction: Vector2) -> void:
 	player_position += direction
 	if molecules.has(player_position):
 		shove_molecule(player_position, direction)
+	
+	if player_position == cast_button_position:
+		if test_shape():
+			print("You did it!")
+			clear_molecules()
+	
 	try_spawn(Vector2(-5, -3), "fire")
 	try_spawn(Vector2(-5, 3), "water")
 	try_spawn(Vector2(5, 3), "earth")
@@ -78,9 +91,10 @@ func _ready() -> void:
 	spawn_molecule(Vector2(-5, 3), "water")
 	spawn_molecule(Vector2(5, 3), "earth")
 	spawn_molecule(Vector2(5, -3), "air")
-	player.position = coord_to_position(Vector2.ZERO)
+	player.position = coord_to_position(player_position)
 	generate_target_shape()
 	spawn_target()
+	cast_button.position = coord_to_position(cast_button_position)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
