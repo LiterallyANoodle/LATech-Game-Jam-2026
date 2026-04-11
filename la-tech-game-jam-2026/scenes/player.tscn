@@ -1,11 +1,15 @@
 [gd_scene format=3 uid="uid://d0isrspvp35fo"]
 
 [ext_resource type="Texture2D" uid="uid://c1mio870lnj8g" path="res://assets/Tile Wizard.png" id="1_3vyb7"]
+[ext_resource type="Texture2D" uid="uid://by18lx42f3lpi" path="res://assets/Tile Wizard Up.png" id="2_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://c3kuspocf0x5s" path="res://assets/Tile Wizard Down.png" id="3_dqkch"]
 
 [sub_resource type="GDScript" id="GDScript_u8vuu"]
 script/source = "extends Node2D
 
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite_h: Sprite2D = $SpriteHorizontal
+@onready var sprite_down: Sprite2D = $SpriteDown
+@onready var sprite_up: Sprite2D = $SpriteUp
 
 var is_moving: bool = false
 
@@ -19,17 +23,29 @@ func _physics_process(delta: float) -> void:
 	var direction: Vector2 = Vector2.ZERO
 	if Input.is_action_pressed(\"move_left\"):
 		direction = Vector2(-1, 0)
-		sprite.flip_h = false
+		sprite_h.flip_h = false
+		sprite_h.visible = true
+		sprite_up.visible = false
+		sprite_down.visible = false
 		#sprite.rotation = PI/2
 	elif Input.is_action_pressed(\"move_right\"):
 		direction = Vector2(1, 0)
-		sprite.flip_h = true
+		sprite_h.flip_h = true
+		sprite_h.visible = true
+		sprite_up.visible = false
+		sprite_down.visible = false
 		#sprite.rotation = (3 * PI) / 2
 	elif Input.is_action_pressed(\"move_down\"):
 		direction = Vector2(0, 1)
+		sprite_h.visible = false
+		sprite_up.visible = false
+		sprite_down.visible = true
 		#sprite.rotation = 0
 	elif Input.is_action_pressed(\"move_up\"):
 		direction = Vector2(0, -1)
+		sprite_h.visible = false
+		sprite_up.visible = true
+		sprite_down.visible = false
 		#sprite.rotation = PI
 	SignalBus.PLAYER_MOVED.emit(direction)
 	direction *= constants.GRID_SIZE
@@ -45,6 +61,16 @@ func _physics_process(delta: float) -> void:
 [node name="Player" type="Node2D" unique_id=1441763233]
 script = SubResource("GDScript_u8vuu")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1808420213]
+[node name="SpriteHorizontal" type="Sprite2D" parent="." unique_id=1808420213]
 scale = Vector2(4, 4)
 texture = ExtResource("1_3vyb7")
+
+[node name="SpriteUp" type="Sprite2D" parent="." unique_id=1010494634]
+visible = false
+scale = Vector2(4, 4)
+texture = ExtResource("2_qhqgy")
+
+[node name="SpriteDown" type="Sprite2D" parent="." unique_id=404899725]
+visible = false
+scale = Vector2(4, 4)
+texture = ExtResource("3_dqkch")
