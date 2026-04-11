@@ -1,5 +1,23 @@
 class_name Molecule extends Node2D
 
+@onready var sprite: Sprite2D = $Sprite2D
+
+var element: String
+
+func set_element(ele: String) -> void:
+	element = ele
+	match ele:
+		"earth":
+			sprite.texture = constants.earth_tex
+		"air":
+			sprite.texture = constants.air_tex
+		"fire":
+			sprite.texture = constants.fire_tex
+		"water":
+			sprite.texture = constants.water_tex
+		_:
+			print("YOU FUCKED UP")
+
 func move(direction: Vector2) -> void:
 	direction = direction * constants.GRID_SIZE
 	var tween: Tween = get_tree().create_tween()

@@ -59,6 +59,7 @@ func spawn_molecule(pos: Vector2, type: String) -> void:
 	add_child(instance)
 	molecules[pos] = instance
 	instance.position = coord_to_position(pos)
+	instance.set_element(type)
 
 func _ready() -> void:
 	SignalBus.PLAYER_MOVED.connect(player_moved)
