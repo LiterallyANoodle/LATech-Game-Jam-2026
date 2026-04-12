@@ -17,6 +17,7 @@ func _ready() -> void:
 	explosion.visible = false
 	timer.wait_time = constants.ROUND_TIME
 	timer.start()
+	SignalBus.MOLECULE_CORRECT.connect(_on_molecule_correct)
 
 func _process(delta: float) -> void:
 	progress_ratio = 1 - (timer.time_left / constants.ROUND_TIME)
@@ -49,3 +50,6 @@ func _on_explode_done() -> void:
 	
 func _on_timer_expire() -> void:
 	explode_wizard()
+	
+func _on_molecule_correct() -> void:
+	explode_enemy()

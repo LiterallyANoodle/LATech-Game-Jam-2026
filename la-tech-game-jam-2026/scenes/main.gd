@@ -72,6 +72,7 @@ func player_moved(direction: Vector2) -> void:
 		if test_shape():
 			print("You did it!")
 			clear_molecules()
+			SignalBus.MOLECULE_CORRECT.emit()
 	
 	try_spawn(Vector2(-5, -3), "fire")
 	try_spawn(Vector2(-5, 3), "water")
@@ -98,4 +99,5 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Input.is_action_just_pressed("escape"):
+		get_tree().quit()
