@@ -3,7 +3,7 @@ extends Node
 # Space between grid spaces in pixels
 const GRID_SIZE: int = 64
 const EXAMPLE_WINDOW: int = 450
-const EXAMPLE_MAX_SIZE: int = 6
+const EXAMPLE_MAX_SIZE: int = 4
 
 # How long it takes for player/blocks to move one grid tile
 const MOVE_TIME: float = 0.2
