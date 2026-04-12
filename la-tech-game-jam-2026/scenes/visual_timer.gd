@@ -21,7 +21,7 @@ func _ready() -> void:
 	
 	# Log initial appearance
 	await get_tree().process_frame
-	SignalBus.log_event.emit("Demon appears!!!")
+	SignalBus.log_event.emit("Hark! A demon aproaches!")
 	
 	SignalBus.MOLECULE_CORRECT.connect(_on_molecule_correct)
 
@@ -52,6 +52,7 @@ func explode_enemy() -> void:
 	boom.play()
 	
 func explode_wizard() -> void:
+	#SignalBus.WIZARD_DIED.emit()
 	explosion.global_position = wizard.global_position
 	timer.stop()
 	wizard.visible = false

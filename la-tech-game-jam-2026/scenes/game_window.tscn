@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bwwb7mvupeo0a" path="res://scenes/visual_timer.tscn" id="1_2blu7"]
 [ext_resource type="Theme" uid="uid://n67r03x14rl8" path="res://scenes/theme.tres" id="1_wyien"]
-[ext_resource type="PackedScene" path="res://scenes/TargetExample.tscn" id="2_hnitv"]
+[ext_resource type="PackedScene" uid="uid://bn04sm2ddikfj" path="res://scenes/TargetExample.tscn" id="2_hnitv"]
 [ext_resource type="Texture2D" uid="uid://eycfn2bs5jpc" path="res://scenes/copper.tres" id="2_xqmpp"]
 [ext_resource type="PackedScene" uid="uid://5kmwpc4uvmji" path="res://scenes/play_area.tscn" id="3_5snyb"]
 [ext_resource type="Texture2D" uid="uid://b11hpoc1cg4ce" path="res://assets/equals.png" id="3_j7t4f"]
@@ -16,13 +16,75 @@
 [ext_resource type="Texture2D" uid="uid://e8xwo15uqpxn" path="res://scenes/gold.tres" id="11_2tqr2"]
 [ext_resource type="Texture2D" uid="uid://dl22jy3e2qk27" path="res://scenes/quintessence.tres" id="12_tjote"]
 [ext_resource type="Script" uid="uid://uywxyrurhf00" path="res://scenes/rich_text_label.gd" id="15_p26jq"]
+[ext_resource type="Script" uid="uid://k2yju4t8eob8" path="res://scenes/hudcontrol.gd" id="17_dpmpl"]
+[ext_resource type="Shader" uid="uid://diqr3g43ujl20" path="res://scenes/game_window2.gdshader" id="17_m14qh"]
 [ext_resource type="Script" uid="uid://c664hj6n33p0k" path="res://scenes/death_screen.gd" id="17_rbk1g"]
+[ext_resource type="Texture2D" uid="uid://cctqevy1tv8u7" path="res://scenes/paperwip.png" id="18_2hbnu"]
+[ext_resource type="Texture2D" uid="uid://dysvmmhi2md86" path="res://assets/board1.png" id="18_dpmpl"]
+[ext_resource type="Script" uid="uid://4605467vjcwo" path="res://simpleshaders.gd" id="19_asirt"]
+[ext_resource type="Texture2D" uid="uid://j38xk0eqfqd" path="res://scenes/letterswip.png" id="19_vgije"]
+[ext_resource type="Shader" uid="uid://cb5efibh45tpw" path="res://scenes/space.gdshader" id="20_k07sk"]
+[ext_resource type="Texture2D" uid="uid://dlk6uwaokriq" path="res://scenes/spaace.png" id="21_g7fy1"]
+[ext_resource type="Texture2D" uid="uid://8dvoyg4l74a6" path="res://scenes/Border.png" id="21_iw28x"]
+[ext_resource type="Shader" uid="uid://bmgjb2c28kt1w" path="res://scenes/game_window1.gdshader" id="22_ns8k7"]
+[ext_resource type="Texture2D" uid="uid://c3lxvco2c158y" path="res://scenes/bordertransparent.png" id="23_5tgvw"]
+[ext_resource type="Shader" uid="uid://84xsa3idiv8b" path="res://scenes/game_window3.gdshader" id="24_5tgvw"]
+[ext_resource type="Texture2D" uid="uid://b54a4be3brjle" path="res://scenes/room.png" id="25_3k3cv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5snyb"]
-bg_color = Color(0.73192763, 0.71364886, 0.8549257, 1)
+bg_color = Color(0.30993092, 0.26264173, 0.50179917, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tjote"]
 bg_color = Color(0.10735036, 0.5507128, 0.35428596, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nc6c0"]
+shader = ExtResource("17_m14qh")
+shader_parameter/wave_speed = 2.0
+shader_parameter/wave_strength = 0.005
+shader_parameter/wave_frequency = 12.0
+
+[sub_resource type="Shader" id="Shader_sd2o7"]
+code = "shader_type canvas_item;
+
+uniform float wave_speed : hint_range(0.0, 5.0) = 2.0;
+uniform float wave_strength : hint_range(0.0, 0.05) = 0.005;
+uniform float wave_frequency : hint_range(0.0, 30.0) = 12.0;
+
+void fragment() {
+    vec2 uv = UV;
+
+    uv.x += cos(TIME * wave_speed + uv.y * wave_frequency) * wave_strength;
+    uv.y += sin(TIME * wave_speed + uv.x * wave_frequency) * wave_strength;
+    
+    COLOR = texture(TEXTURE, uv);
+}"
+script = ExtResource("19_asirt")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pudxf"]
+shader = SubResource("Shader_sd2o7")
+shader_parameter/wave_speed = 2.0
+shader_parameter/wave_strength = 0.005
+shader_parameter/wave_frequency = 12.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3k3cv"]
+shader = ExtResource("22_ns8k7")
+shader_parameter/wave_speed = 2.0
+shader_parameter/wave_strength = 0.005
+shader_parameter/wave_frequency = 12.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k07sk"]
+shader = ExtResource("24_5tgvw")
+shader_parameter/wave_speed = 2.0
+shader_parameter/wave_strength = 0.005
+shader_parameter/wave_frequency = 12.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m14qh"]
+shader = ExtResource("20_k07sk")
+shader_parameter/loop_radius = 0.05
+shader_parameter/movement_speed = 0.1
+shader_parameter/woogle_strength = 0.01
+shader_parameter/woogle_freq = 4.0
+shader_parameter/layer_offset = 0.02
 
 [node name="Game Window" type="CanvasLayer" unique_id=1122543920]
 
@@ -51,6 +113,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_5snyb")
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
+offset_left = -5.0
+offset_right = -5.0
 offset_bottom = 237.0
 grow_horizontal = 2
 theme_override_constants/margin_left = 8
@@ -296,22 +360,107 @@ size = Vector2i(864, 503)
 render_target_update_mode = 4
 
 [node name="LogPanelContainer" type="PanelContainer" parent="." unique_id=93815421]
-offset_left = 6.0
-offset_top = 242.0
-offset_right = 281.0
-offset_bottom = 354.0
+offset_left = 4.0
+offset_top = 238.0
+offset_right = 271.0
+offset_bottom = 344.0
 
 [node name="MarginContainer" type="MarginContainer" parent="LogPanelContainer" unique_id=932991394]
 layout_mode = 2
-theme_override_constants/margin_left = 18
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 7
 
 [node name="RichTextLabel" type="RichTextLabel" parent="LogPanelContainer/MarginContainer" unique_id=1707294649]
 layout_mode = 2
 script = ExtResource("15_p26jq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2027159943]
+layer = 2
+
+[node name="HUDControl" type="Control" parent="CanvasLayer" unique_id=1397567153]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("17_dpmpl")
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/HUDControl" unique_id=1548873888]
+layout_mode = 0
+offset_left = 301.0
+offset_top = 158.0
+offset_right = 341.0
+offset_bottom = 181.0
+
+[node name="TimeLabel" type="Label" parent="CanvasLayer/HUDControl" unique_id=251988152]
+layout_mode = 0
+offset_left = 301.0
+offset_top = 181.0
+offset_right = 341.0
+offset_bottom = 204.0
+
+[node name="board" type="TextureRect" parent="CanvasLayer" unique_id=1474660730]
+material = SubResource("ShaderMaterial_nc6c0")
+offset_left = 8.0
+offset_top = -6.0
+offset_right = 1160.0
+offset_bottom = 644.0
+texture = ExtResource("18_dpmpl")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=1857730376]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1153.0
+offset_top = 360.0
+offset_right = -864.0
+offset_bottom = 648.0
+grow_horizontal = 0
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("18_2hbnu")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TextureRect" unique_id=554117781]
+material = SubResource("ShaderMaterial_pudxf")
+layout_mode = 0
+offset_left = -77.0
+offset_top = -53.0
+offset_right = 352.0
+offset_bottom = 337.0
+texture = ExtResource("19_vgije")
+
+[node name="border" type="TextureRect" parent="CanvasLayer" unique_id=236370593]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("21_iw28x")
+
+[node name="border2" type="TextureRect" parent="CanvasLayer/border" unique_id=1473182979]
+material = SubResource("ShaderMaterial_3k3cv")
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 650.0
+texture = ExtResource("23_5tgvw")
+
+[node name="roomlayout" type="TextureRect" parent="CanvasLayer" unique_id=202141115]
+visible = false
+material = SubResource("ShaderMaterial_k07sk")
+offset_right = 1153.0
+offset_bottom = 650.0
+texture = ExtResource("25_3k3cv")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="CanvasLayer" unique_id=1826076130]
+layer = 0
+
+[node name="spacedeepbg" type="TextureRect" parent="CanvasLayer/CanvasLayer2" unique_id=2049998869]
+material = SubResource("ShaderMaterial_m14qh")
+offset_left = -1901.0
+offset_top = -1207.0
+offset_right = 3491.0
+offset_bottom = 1489.0
+texture = ExtResource("21_g7fy1")
 
 [node name="DeathScreen" type="Control" parent="CanvasLayer" unique_id=762108521]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

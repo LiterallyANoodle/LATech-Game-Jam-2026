@@ -5,5 +5,5 @@ signal PLAYER_MOVED(direction: Vector2)
 signal WIZARD_DIED
 signal MOLECULE_CORRECT
 signal REBUILD_EXAMPLE(example: Dictionary)
-
+signal MATERIAL_COMBINED
 signal PLAYER_FUSED(direction: Vector2)

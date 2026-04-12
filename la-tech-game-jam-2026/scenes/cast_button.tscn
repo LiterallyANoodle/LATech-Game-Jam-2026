@@ -1,9 +1,22 @@
 [gd_scene format=3 uid="uid://c4f4ibpv3pvt8"]
 
-[ext_resource type="Texture2D" uid="uid://isfogqdb8ndo" path="res://assets/placeholder.png" id="1_pwvh4"]
+[ext_resource type="Shader" uid="uid://dttl01wu7224a" path="res://scenes/cast_button.gdshader" id="1_ievu5"]
+[ext_resource type="Texture2D" uid="uid://ctyfy48r78dlx" path="res://assets/orb.png" id="1_pwvh4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_st45i"]
+shader = ExtResource("1_ievu5")
+shader_parameter/pulse_speed = 3.0
+shader_parameter/pulse_amount = 0.1
+shader_parameter/wave_frequency = 1.0
+shader_parameter/wave_amplitude = 0.02
+shader_parameter/wave_speed = 0.6
+shader_parameter/orb_color = Color(1, 1, 1, 1)
+shader_parameter/glow_color = Color(0.8, 0.9, 1, 1)
 
 [node name="CastButton" type="Node2D" unique_id=322001959]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=788726991]
 z_index = -1
+material = SubResource("ShaderMaterial_st45i")
+scale = Vector2(9.135, 9.135)
 texture = ExtResource("1_pwvh4")

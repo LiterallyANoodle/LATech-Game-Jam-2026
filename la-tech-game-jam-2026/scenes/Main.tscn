@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d0isrspvp35fo" path="res://scenes/player.tscn" id="1_elqb8"]
 [ext_resource type="Script" uid="uid://l1d8mran7vpv" path="res://scenes/main.gd" id="1_rvslj"]
+[ext_resource type="AudioStream" uid="uid://xvyji05k8ori" path="res://assets/SwiftcurrentMasterblaster.wav" id="4_rarhs"]
 [ext_resource type="PackedScene" uid="uid://c4f4ibpv3pvt8" path="res://scenes/cast_button.tscn" id="5_vcsgt"]
 
 [node name="Main" type="Node2D" unique_id=429696055]
@@ -15,3 +16,11 @@ zoom = Vector2(0.8, 0.8)
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=816505806]
 
 [node name="CastButton" parent="." unique_id=322001959 instance=ExtResource("5_vcsgt")]
+
+[node name="GhostContainer" type="Node2D" parent="." unique_id=1181537467]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1534592531]
+stream = ExtResource("4_rarhs")
+volume_db = -22.808
+pitch_scale = 0.9
+autoplay = true

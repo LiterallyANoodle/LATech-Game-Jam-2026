@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cayu18wmvepsd" path="res://scenes/Main.tscn" id="1_gtu41"]
 
 [node name="Play Area" type="SubViewport" unique_id=2126449590]
+transparent_bg = true
 canvas_item_default_texture_filter = 0
 size = Vector2i(1152, 648)
 

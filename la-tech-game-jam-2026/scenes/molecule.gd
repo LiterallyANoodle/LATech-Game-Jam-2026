@@ -18,12 +18,15 @@ func fuse(dir: Vector2) -> void:
 	match dir:
 		Vector2.UP: connect_up.visible = true
 		Vector2.RIGHT: connect_right.visible = true
-		
+	SignalBus.log_event.emit("Molecule fused!")
+# Note: Theres a bug with both of these that makes them output in the console twice.
 func unfuse(dir: Vector2) -> void:
 	fusions[dir] = false
 	match dir:
 		Vector2.UP: connect_up.visible = false
 		Vector2.RIGHT: connect_right.visible = false
+	SignalBus.log_event.emit("Molecule unfused.")
+
 
 func recalc() -> void:
 	if fusions[Vector2.UP]: connect_up.visible = true

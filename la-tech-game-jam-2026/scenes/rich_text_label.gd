@@ -8,7 +8,7 @@ func _ready() -> void:
 	SignalBus.log_event.connect(_on_log_event)
 	
 	# Init message
-	_on_log_event("Game Start.") 
+	_on_log_event("Fight!") 
 	
 func _on_log_event(message: String) -> void:
 	# Add a new line with the message and add ">" to begining of message
@@ -17,6 +17,6 @@ func _on_log_event(message: String) -> void:
 	
 	await get_tree().process_frame
 	
-	# Autoscroll to the bottom so we see the newest message
+	# Autoscroll to the bottom
 	var scrollbar: VScrollBar = get_v_scroll_bar()
 	scrollbar.value = scrollbar.max_value
