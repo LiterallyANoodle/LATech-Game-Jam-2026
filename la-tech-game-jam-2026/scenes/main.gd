@@ -130,9 +130,10 @@ func player_moved(direction: Vector2) -> void:
 	
 	if player_position == cast_button_position:
 		if test_shape():
-			print("You did it!")
 			clear_molecules()
 			SignalBus.MOLECULE_CORRECT.emit()
+			generate_target_shape()
+			SignalBus.REBUILD_EXAMPLE.emit(target_shape)
 	
 	try_spawn(Vector2(-5, -3), "fire")
 	try_spawn(Vector2(-5, 3), "water")
