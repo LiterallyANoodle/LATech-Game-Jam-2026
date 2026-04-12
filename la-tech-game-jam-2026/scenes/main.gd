@@ -60,6 +60,13 @@ func remove_molecule(pos: Vector2) -> void:
 		molecules.erase(pos)
 		mol.free()
 
+func restore_connections(pos: Vector2) -> void:
+	for dir: Vector2 in dirs:
+		var other: Vector2 = pos + dir
+		if not molecules.has(other): continue
+		if molecules[other].fusions[dir * -1]:
+			molecules[pos].fusions[dir] = true
+
 func shove_molecule(pos: Vector2, dir: Vector2) -> void:
 	if molecules.has(pos):
 		var mol: Molecule = molecules[pos]
@@ -102,6 +109,8 @@ func shove_molecule(pos: Vector2, dir: Vector2) -> void:
 				mol.set_element("quint")
 			shove_molecule(pos + dir, dir)
 		molecules[pos + dir] = mol
+		restore_connections(pos + dir)
+		molecules[pos + dir].recalc()
 
 func player_fused(direction: Vector2) -> void:
 	var target: Vector2 = player_position + direction

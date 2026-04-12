@@ -25,6 +25,10 @@ func unfuse(dir: Vector2) -> void:
 		Vector2.UP: connect_up.visible = false
 		Vector2.RIGHT: connect_right.visible = false
 
+func recalc() -> void:
+	if fusions[Vector2.UP]: connect_up.visible = true
+	if fusions[Vector2.RIGHT]: connect_right.visible = true
+
 func set_element(ele: String) -> void:
 	element = ele
 	match ele:
