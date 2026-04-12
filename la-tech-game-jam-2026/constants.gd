@@ -8,7 +8,7 @@ const EXAMPLE_MAX_SIZE: int = 6
 # How long it takes for player/blocks to move one grid tile
 const MOVE_TIME: float = 0.2
 
-const ROUND_TIME: float = 90.0
+const ROUND_TIME: float = 120.0
 
 # Atom textures
 @onready var elements_tex: Texture2D = load("res://assets/Elements.png")
