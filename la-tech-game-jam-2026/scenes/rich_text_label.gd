@@ -8,7 +8,7 @@ func _ready() -> void:
 	SignalBus.log_event.connect(_on_log_event)
 	
 	# Init message
-	_on_log_event("Fight!") 
+	_on_log_event("Assemble the shape on the board then touch the light! Press Space to bond!") 
 	
 func _on_log_event(message: String) -> void:
 	# Add a new line with the message and add ">" to begining of message

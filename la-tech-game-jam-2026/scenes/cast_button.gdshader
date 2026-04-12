@@ -10,8 +10,8 @@ uniform float wave_amplitude : hint_range(0.0, 0.1) = 0.02;
 uniform float wave_speed : hint_range(0.0, 10.0) = 4.0;
 
 // Color settings
-uniform vec4 orb_color : source_color = vec4(1.0, 1.0, 1.0, 1.0); // Bright center
-uniform vec4 glow_color : source_color = vec4(0.8, 0.9, 1.0, 1.0); // Outer glow color
+uniform vec4 orb_color : source_color = vec4(1.0, 1.0, 1.0, 1.0); 
+uniform vec4 glow_color : source_color = vec4(0.8, 0.9, 1.0, 1.0); 
 
 void fragment() {
 	vec2 from_center = UV - 0.5;
