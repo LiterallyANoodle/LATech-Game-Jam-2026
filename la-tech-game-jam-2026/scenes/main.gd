@@ -107,8 +107,12 @@ func player_fused(direction: Vector2) -> void:
 	var target: Vector2 = player_position + direction
 	var target2: Vector2 = target + direction
 	if (not molecules.has(target)) or (not molecules.has(target2)): return
-	molecules[target].fuse(direction)
-	molecules[target2].fuse(direction * -1)
+	if molecules[target].fusions[direction]:
+		molecules[target].unfuse(direction)
+		molecules[target2].unfuse(direction * -1)
+	else:
+		molecules[target].fuse(direction)
+		molecules[target2].fuse(direction * -1)
 
 func player_moved(direction: Vector2) -> void:
 	player_position += direction
