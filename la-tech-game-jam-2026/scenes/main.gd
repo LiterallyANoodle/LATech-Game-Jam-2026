@@ -16,7 +16,7 @@ const elements: Array = ["earth", "air", "fire", "water", "iron", "copper", "gol
 @onready var ghost_container: Node2D = $GhostContainer
 @onready var is_resetting: bool = false
 @onready var is_dead: bool = false
-
+@onready var is_fullscreen: bool = false
 
 # Transforms GRID COORDINATES to WORLD COORDINATES
 func coord_to_position(coord: Vector2) -> Vector2:
@@ -257,5 +257,11 @@ func _on_wizard_died() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("escape"):
 		get_tree().quit()
+	if Input.is_action_just_pressed("fullscreen"):
+		is_fullscreen = !is_fullscreen
+		if is_fullscreen:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		else:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		
 		
