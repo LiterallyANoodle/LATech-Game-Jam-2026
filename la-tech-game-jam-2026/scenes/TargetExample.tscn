@@ -1,6 +1,7 @@
-[gd_scene format=3 uid="uid://bn04sm2ddikfj"]
+[gd_scene format=3 uid="uid://dxyfoxjxnohif"]
 
-[ext_resource type="Script" uid="uid://d283bmhiixg76" path="res://scenes/target_example.gd" id="1_r6jdo"]
+[ext_resource type="Script" uid="uid://bsbr6urd1431t" path="res://scenes/target_example.gd" id="1_r6jdo"]
 
 [node name="SubViewport" type="SubViewport" unique_id=296702341]
+size = Vector2i(1024, 1024)
 script = ExtResource("1_r6jdo")

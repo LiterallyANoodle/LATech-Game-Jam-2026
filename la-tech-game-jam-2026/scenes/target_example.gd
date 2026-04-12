@@ -19,3 +19,6 @@ func display(mols: Dictionary) -> void:
 	molecules.clear()
 	for key: Vector2 in mols:
 		spawn_molecule(key, mols[key])
+
+func _ready() -> void:
+	SignalBus.REBUILD_EXAMPLE.connect(display)

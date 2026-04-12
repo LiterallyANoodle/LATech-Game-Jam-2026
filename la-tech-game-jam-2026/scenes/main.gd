@@ -155,7 +155,8 @@ func _ready() -> void:
 	spawn_molecule(Vector2(5, -3), "air")
 	player.position = coord_to_position(player_position)
 	generate_target_shape()
-	spawn_target()
+	#spawn_target()
+	SignalBus.REBUILD_EXAMPLE.emit(target_shape)
 	cast_button.position = coord_to_position(cast_button_position)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
