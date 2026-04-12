@@ -67,6 +67,8 @@ stretch = true
 [node name="Target Example" parent="HBox/Left Panel/Goal/MarginContainer/Square/Goal Image" unique_id=296702341 instance=ExtResource("2_hnitv")]
 handle_input_locally = false
 size = Vector2i(232, 232)
+size_2d_override = Vector2i(450, 450)
+size_2d_override_stretch = true
 render_target_update_mode = 4
 
 [node name="Panel" type="Panel" parent="HBox/Left Panel" unique_id=318645233]

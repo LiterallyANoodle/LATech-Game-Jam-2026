@@ -21,7 +21,7 @@ func coord_to_position(coord: Vector2) -> Vector2:
 func generate_target_shape() -> void:
 	target_shape.clear()
 	target_shape[Vector2.ZERO] = elements.pick_random()
-	for i: int in range(0, 10):
+	for i: int in range(0, constants.EXAMPLE_MAX_SIZE):
 		var pos: Vector2 = target_shape.keys().pick_random()
 		pos += dirs.pick_random()
 		target_shape[pos] = elements.pick_random()
