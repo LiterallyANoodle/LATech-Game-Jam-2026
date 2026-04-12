@@ -13,3 +13,19 @@ script = ExtResource("1_hapxn")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=385561697]
 scale = Vector2(4, 4)
 texture = SubResource("AtlasTexture_tf52o")
+
+[node name="EmitUp" type="CPUParticles2D" parent="Sprite2D" unique_id=89695840]
+position = Vector2(0, -8)
+emitting = false
+lifetime = 2.0
+emission_shape = 1
+emission_sphere_radius = 3.0
+gravity = Vector2(0, 0)
+
+[node name="EmitRight" type="CPUParticles2D" parent="Sprite2D" unique_id=1124840122]
+position = Vector2(8, 0)
+emitting = false
+lifetime = 2.0
+emission_shape = 1
+emission_sphere_radius = 3.0
+gravity = Vector2(0, 0)

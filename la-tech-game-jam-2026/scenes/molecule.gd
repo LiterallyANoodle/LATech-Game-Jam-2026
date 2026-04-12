@@ -1,20 +1,37 @@
 class_name Molecule extends Node2D
 
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var emit_right: CPUParticles2D = $Sprite2D/EmitRight
+@onready var emit_up: CPUParticles2D = $Sprite2D/EmitUp
 
 var element: String
+var fusions: Dictionary
+
+func _ready() -> void:
+	fusions[Vector2.UP] = false
+	fusions[Vector2.DOWN] = false
+	fusions[Vector2.LEFT] = false
+	fusions[Vector2.RIGHT] = false
+
+func fuse(dir: Vector2) -> void:
+	fusions[dir] = true
+	match dir:
+		Vector2.UP: emit_up.emitting = true
+		Vector2.RIGHT: emit_right.emitting = true
+		
+func unfuse(dir: Vector2) -> void:
+	fusions[dir] = false
+	match dir:
+		Vector2.UP: emit_up.emitting = false
+		Vector2.RIGHT: emit_right.emiting = false
 
 func set_element(ele: String) -> void:
 	element = ele
 	match ele:
-		"earth":
-			sprite.texture = constants.earth_tex
-		"air":
-			sprite.texture = constants.air_tex
-		"fire":
-			sprite.texture = constants.fire_tex
-		"water":
-			sprite.texture = constants.water_tex
+		"earth": sprite.texture = constants.earth_tex
+		"air": sprite.texture = constants.air_tex
+		"fire": sprite.texture = constants.fire_tex
+		"water": sprite.texture = constants.water_tex
 		"copper": sprite.texture = constants.copper_tex
 		"iron": sprite.texture = constants.iron_tex
 		"gold": sprite.texture = constants.gold_tex
