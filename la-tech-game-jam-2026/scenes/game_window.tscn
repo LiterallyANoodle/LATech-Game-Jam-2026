@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bwwb7mvupeo0a" path="res://scenes/visual_timer.tscn" id="1_2blu7"]
 [ext_resource type="Theme" uid="uid://n67r03x14rl8" path="res://scenes/theme.tres" id="1_wyien"]
+[ext_resource type="PackedScene" uid="uid://bn04sm2ddikfj" path="res://scenes/TargetExample.tscn" id="2_hnitv"]
 [ext_resource type="Texture2D" uid="uid://eycfn2bs5jpc" path="res://scenes/copper.tres" id="2_xqmpp"]
 [ext_resource type="PackedScene" uid="uid://5kmwpc4uvmji" path="res://scenes/play_area.tscn" id="3_5snyb"]
 [ext_resource type="Texture2D" uid="uid://b11hpoc1cg4ce" path="res://assets/equals.png" id="3_j7t4f"]
@@ -46,16 +47,26 @@ theme = ExtResource("1_wyien")
 theme_override_styles/panel = SubResource("StyleBoxFlat_5snyb")
 
 [node name="MarginContainer" type="MarginContainer" parent="HBox/Left Panel/Goal" unique_id=636026724]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 237.0
+grow_horizontal = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBox/Left Panel/Goal/MarginContainer" unique_id=527226576]
+[node name="Square" type="AspectRatioContainer" parent="HBox/Left Panel/Goal/MarginContainer" unique_id=1330297058]
 layout_mode = 2
+stretch_mode = 1
 
-[node name="Label" type="Label" parent="HBox/Left Panel/Goal/MarginContainer/VBoxContainer" unique_id=1901001800]
+[node name="Goal Image" type="SubViewportContainer" parent="HBox/Left Panel/Goal/MarginContainer/Square" unique_id=1604644431]
 layout_mode = 2
-text = "Goal:"
+stretch = true
+
+[node name="Target Example" parent="HBox/Left Panel/Goal/MarginContainer/Square/Goal Image" unique_id=296702341 instance=ExtResource("2_hnitv")]
+handle_input_locally = false
+size = Vector2i(232, 232)
+render_target_update_mode = 4
 
 [node name="Panel" type="Panel" parent="HBox/Left Panel" unique_id=318645233]
 layout_mode = 2

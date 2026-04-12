@@ -1,4 +1,4 @@
-extends Node2D
+extends SubViewport
 
 var molecule_scene: PackedScene = preload("res://scenes/molecule.tscn")
 var molecules: Dictionary

@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://dxyfoxjxnohif"]
+[gd_scene format=3 uid="uid://bn04sm2ddikfj"]
+
+[ext_resource type="Script" uid="uid://d283bmhiixg76" path="res://scenes/target_example.gd" id="1_r6jdo"]
 
 [node name="SubViewport" type="SubViewport" unique_id=296702341]
+script = ExtResource("1_r6jdo")
