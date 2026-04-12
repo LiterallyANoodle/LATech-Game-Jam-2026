@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dnegj76nvp1g" path="res://scenes/molecule.gd" id="1_hapxn"]
 [ext_resource type="Texture2D" uid="uid://deumellvht7qm" path="res://assets/Elements.png" id="2_hapxn"]
+[ext_resource type="Texture2D" uid="uid://bvyufo75s5ssh" path="res://assets/connector.png" id="3_tf52o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tf52o"]
 atlas = ExtResource("2_hapxn")
@@ -14,18 +15,15 @@ script = ExtResource("1_hapxn")
 scale = Vector2(4, 4)
 texture = SubResource("AtlasTexture_tf52o")
 
-[node name="EmitUp" type="CPUParticles2D" parent="Sprite2D" unique_id=89695840]
+[node name="ConnectUp" type="Sprite2D" parent="Sprite2D" unique_id=1081909416]
+visible = false
+z_index = 1
 position = Vector2(0, -8)
-emitting = false
-lifetime = 2.0
-emission_shape = 1
-emission_sphere_radius = 3.0
-gravity = Vector2(0, 0)
+texture = ExtResource("3_tf52o")
 
-[node name="EmitRight" type="CPUParticles2D" parent="Sprite2D" unique_id=1124840122]
+[node name="ConnectRight" type="Sprite2D" parent="Sprite2D" unique_id=972845366]
+visible = false
+z_index = 1
 position = Vector2(8, 0)
-emitting = false
-lifetime = 2.0
-emission_shape = 1
-emission_sphere_radius = 3.0
-gravity = Vector2(0, 0)
+rotation = 1.5707964
+texture = ExtResource("3_tf52o")

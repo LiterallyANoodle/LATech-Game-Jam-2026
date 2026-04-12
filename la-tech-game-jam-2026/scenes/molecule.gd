@@ -1,8 +1,8 @@
 class_name Molecule extends Node2D
 
 @onready var sprite: Sprite2D = $Sprite2D
-@onready var emit_right: CPUParticles2D = $Sprite2D/EmitRight
-@onready var emit_up: CPUParticles2D = $Sprite2D/EmitUp
+@onready var connect_right: Sprite2D = $Sprite2D/ConnectRight
+@onready var connect_up: Sprite2D = $Sprite2D/ConnectUp
 
 var element: String
 var fusions: Dictionary
@@ -16,14 +16,14 @@ func _ready() -> void:
 func fuse(dir: Vector2) -> void:
 	fusions[dir] = true
 	match dir:
-		Vector2.UP: emit_up.emitting = true
-		Vector2.RIGHT: emit_right.emitting = true
+		Vector2.UP: connect_up.visible = true
+		Vector2.RIGHT: connect_right.visible = true
 		
 func unfuse(dir: Vector2) -> void:
 	fusions[dir] = false
 	match dir:
-		Vector2.UP: emit_up.emitting = false
-		Vector2.RIGHT: emit_right.emiting = false
+		Vector2.UP: connect_up.visible = false
+		Vector2.RIGHT: connect_right.visible = false
 
 func set_element(ele: String) -> void:
 	element = ele
