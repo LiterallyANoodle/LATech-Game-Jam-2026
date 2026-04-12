@@ -65,6 +65,9 @@ func shove_molecule(pos: Vector2, dir: Vector2) -> void:
 		var mol: Molecule = molecules[pos]
 		mol.move(dir)
 		molecules.erase(pos)
+		for key: Vector2 in mol.fusions:
+			if mol.fusions[key] == true:
+				shove_molecule(pos + key, dir)
 		if molecules.has(pos + dir):
 			var other: Molecule = molecules[pos + dir]
 			if mol.element == "earth" and other.element == "air":
@@ -100,6 +103,13 @@ func shove_molecule(pos: Vector2, dir: Vector2) -> void:
 			shove_molecule(pos + dir, dir)
 		molecules[pos + dir] = mol
 
+func player_fused(direction: Vector2) -> void:
+	var target: Vector2 = player_position + direction
+	var target2: Vector2 = target + direction
+	if (not molecules.has(target)) or (not molecules.has(target2)): return
+	molecules[target].fuse(direction)
+	molecules[target2].fuse(direction * -1)
+
 func player_moved(direction: Vector2) -> void:
 	player_position += direction
 	if molecules.has(player_position):
@@ -125,6 +135,7 @@ func spawn_molecule(pos: Vector2, type: String) -> void:
 
 func _ready() -> void:
 	SignalBus.PLAYER_MOVED.connect(player_moved)
+	SignalBus.PLAYER_FUSED.connect(player_fused)
 	spawn_molecule(Vector2(-5, -3), "fire")
 	spawn_molecule(Vector2(-5, 3), "water")
 	spawn_molecule(Vector2(5, 3), "earth")

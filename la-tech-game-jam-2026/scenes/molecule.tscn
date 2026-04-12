@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dnegj76nvp1g" path="res://scenes/molecule.gd" id="1_hapxn"]
 [ext_resource type="Texture2D" uid="uid://deumellvht7qm" path="res://assets/Elements.png" id="2_hapxn"]
+[ext_resource type="Texture2D" uid="uid://bvyufo75s5ssh" path="res://assets/connector.png" id="3_tf52o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tf52o"]
 atlas = ExtResource("2_hapxn")
@@ -13,3 +14,16 @@ script = ExtResource("1_hapxn")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=385561697]
 scale = Vector2(4, 4)
 texture = SubResource("AtlasTexture_tf52o")
+
+[node name="ConnectUp" type="Sprite2D" parent="Sprite2D" unique_id=1081909416]
+visible = false
+z_index = 1
+position = Vector2(0, -8)
+texture = ExtResource("3_tf52o")
+
+[node name="ConnectRight" type="Sprite2D" parent="Sprite2D" unique_id=972845366]
+visible = false
+z_index = 1
+position = Vector2(8, 0)
+rotation = 1.5707964
+texture = ExtResource("3_tf52o")
