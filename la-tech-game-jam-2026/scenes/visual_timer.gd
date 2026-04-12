@@ -62,6 +62,10 @@ func explode_wizard() -> void:
 	boom.seek(0.0)
 	boom.play()
 	
+	# Wait for 3 seconds while the explosion plays/fades
+	await get_tree().create_timer(2.3).timeout
+	SignalBus.WIZARD_DIED.emit()
+	
 func _on_explode_done() -> void:
 	explosion.visible = false
 	

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bwwb7mvupeo0a" path="res://scenes/visual_timer.tscn" id="1_2blu7"]
 [ext_resource type="Theme" uid="uid://n67r03x14rl8" path="res://scenes/theme.tres" id="1_wyien"]
-[ext_resource type="PackedScene" uid="uid://bn04sm2ddikfj" path="res://scenes/TargetExample.tscn" id="2_hnitv"]
+[ext_resource type="PackedScene" path="res://scenes/TargetExample.tscn" id="2_hnitv"]
 [ext_resource type="Texture2D" uid="uid://eycfn2bs5jpc" path="res://scenes/copper.tres" id="2_xqmpp"]
 [ext_resource type="PackedScene" uid="uid://5kmwpc4uvmji" path="res://scenes/play_area.tscn" id="3_5snyb"]
 [ext_resource type="Texture2D" uid="uid://b11hpoc1cg4ce" path="res://assets/equals.png" id="3_j7t4f"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://e8xwo15uqpxn" path="res://scenes/gold.tres" id="11_2tqr2"]
 [ext_resource type="Texture2D" uid="uid://dl22jy3e2qk27" path="res://scenes/quintessence.tres" id="12_tjote"]
 [ext_resource type="Script" uid="uid://uywxyrurhf00" path="res://scenes/rich_text_label.gd" id="15_p26jq"]
+[ext_resource type="Script" uid="uid://c664hj6n33p0k" path="res://scenes/death_screen.gd" id="17_rbk1g"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5snyb"]
 bg_color = Color(0.73192763, 0.71364886, 0.8549257, 1)
@@ -305,3 +306,30 @@ theme_override_constants/margin_left = 18
 [node name="RichTextLabel" type="RichTextLabel" parent="LogPanelContainer/MarginContainer" unique_id=1707294649]
 layout_mode = 2
 script = ExtResource("15_p26jq")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2027159943]
+
+[node name="DeathScreen" type="Control" parent="CanvasLayer" unique_id=762108521]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("17_rbk1g")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/DeathScreen" unique_id=531970698]
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 649.0
+color = Color(0.99607843, 0.45490196, 0.3372549, 0.4509804)
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/DeathScreen/ColorRect" unique_id=1525744369]
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 648.0
+
+[node name="DeathLabel" type="Label" parent="CanvasLayer/DeathScreen/ColorRect/CenterContainer" unique_id=128318671]
+layout_mode = 2
+theme_override_font_sizes/font_size = 85
+text = "You DIED!!!!!"
