@@ -9,7 +9,7 @@ var cast_button_position: Vector2 = Vector2(0, -4)
 
 const dirs: Array = [Vector2.UP, Vector2.DOWN, Vector2.LEFT, Vector2.RIGHT]
 const neighborhood: Array = [Vector2.UP, Vector2.DOWN, Vector2.LEFT, Vector2.RIGHT, Vector2.ZERO]
-const elements: Array = ["earth", "air", "fire", "water"]
+const elements: Array = ["earth", "air", "fire", "water", "iron", "copper", "gold", "silver", "quint"]
 
 @onready var player: Node2D = $Player
 @onready var cast_button: Node2D = $CastButton
@@ -54,12 +54,49 @@ func try_spawn(pos: Vector2, type: String) -> void:
 		if molecules.has(dir + pos): clear = false
 	if clear: spawn_molecule(pos, type)
 
+func remove_molecule(pos: Vector2) -> void:
+	if molecules.has(pos):
+		var mol: Molecule = molecules[pos]
+		molecules.erase(pos)
+		mol.free()
+
 func shove_molecule(pos: Vector2, dir: Vector2) -> void:
 	if molecules.has(pos):
 		var mol: Molecule = molecules[pos]
 		mol.move(dir)
 		molecules.erase(pos)
 		if molecules.has(pos + dir):
+			var other: Molecule = molecules[pos + dir]
+			if mol.element == "earth" and other.element == "air":
+				remove_molecule(pos + dir)
+				mol.set_element("copper")
+			elif mol.element == "air" and other.element == "earth":
+				remove_molecule(pos + dir)
+				mol.set_element("copper")
+			elif mol.element == "fire" and other.element == "water":
+				remove_molecule(pos + dir)
+				mol.set_element("iron")
+			elif mol.element == "water" and other.element == "fire":
+				remove_molecule(pos + dir)
+				mol.set_element("iron")
+			elif mol.element == "iron" and other.element == "air":
+				remove_molecule(pos + dir)
+				mol.set_element("silver")
+			elif mol.element == "air" and other.element == "iron":
+				remove_molecule(pos + dir)
+				mol.set_element("silver")
+			elif mol.element == "copper" and other.element == "fire":
+				remove_molecule(pos + dir)
+				mol.set_element("gold")
+			elif mol.element == "fire" and other.element == "copper":
+				remove_molecule(pos + dir)
+				mol.set_element("gold")
+			elif mol.element == "gold" and other.element == "silver":
+				remove_molecule(pos + dir)
+				mol.set_element("quint")
+			elif mol.element == "silver" and other.element == "gold":
+				remove_molecule(pos + dir)
+				mol.set_element("quint")
 			shove_molecule(pos + dir, dir)
 		molecules[pos + dir] = mol
 

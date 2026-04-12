@@ -15,6 +15,11 @@ func set_element(ele: String) -> void:
 			sprite.texture = constants.fire_tex
 		"water":
 			sprite.texture = constants.water_tex
+		"copper": sprite.texture = constants.copper_tex
+		"iron": sprite.texture = constants.iron_tex
+		"gold": sprite.texture = constants.gold_tex
+		"silver": sprite.texture = constants.silver_tex
+		"quint": sprite.texture = constants.quintessence_tex
 		_:
 			print("YOU FUCKED UP")
 
