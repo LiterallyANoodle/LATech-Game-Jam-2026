@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://fv20ay682rqo" path="res://scenes/silver.tres" id="10_vgije"]
 [ext_resource type="Texture2D" uid="uid://e8xwo15uqpxn" path="res://scenes/gold.tres" id="11_2tqr2"]
 [ext_resource type="Texture2D" uid="uid://dl22jy3e2qk27" path="res://scenes/quintessence.tres" id="12_tjote"]
+[ext_resource type="Script" uid="uid://uywxyrurhf00" path="res://scenes/rich_text_label.gd" id="15_p26jq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5snyb"]
 bg_color = Color(0.73192763, 0.71364886, 0.8549257, 1)
@@ -277,3 +278,17 @@ stretch = true
 handle_input_locally = false
 size = Vector2i(864, 503)
 render_target_update_mode = 4
+
+[node name="LogPanelContainer" type="PanelContainer" parent="." unique_id=93815421]
+offset_left = 6.0
+offset_top = 180.0
+offset_right = 281.0
+offset_bottom = 310.0
+
+[node name="MarginContainer" type="MarginContainer" parent="LogPanelContainer" unique_id=932991394]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+
+[node name="RichTextLabel" type="RichTextLabel" parent="LogPanelContainer/MarginContainer" unique_id=1707294649]
+layout_mode = 2
+script = ExtResource("15_p26jq")

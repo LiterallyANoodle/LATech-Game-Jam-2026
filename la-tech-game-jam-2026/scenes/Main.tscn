@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://d0isrspvp35fo" path="res://scenes/player.tscn" id="1_elqb8"]
 [ext_resource type="Script" uid="uid://l1d8mran7vpv" path="res://scenes/main.gd" id="1_rvslj"]
-[ext_resource type="Script" uid="uid://uywxyrurhf00" path="res://scenes/rich_text_label.gd" id="4_rarhs"]
 [ext_resource type="PackedScene" uid="uid://c4f4ibpv3pvt8" path="res://scenes/cast_button.tscn" id="5_vcsgt"]
 
 [node name="Main" type="Node2D" unique_id=429696055]
@@ -13,19 +12,5 @@ script = ExtResource("1_rvslj")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1256584762]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=816505806]
-
-[node name="LogPanelContainer" type="PanelContainer" parent="CanvasLayer" unique_id=1609054408]
-offset_left = 835.0
-offset_top = 554.0
-offset_right = 1102.0
-offset_bottom = 632.0
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/LogPanelContainer" unique_id=493092242]
-layout_mode = 2
-theme_override_constants/margin_left = 18
-
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/LogPanelContainer/MarginContainer" unique_id=319876137]
-layout_mode = 2
-script = ExtResource("4_rarhs")
 
 [node name="CastButton" parent="." unique_id=322001959 instance=ExtResource("5_vcsgt")]
