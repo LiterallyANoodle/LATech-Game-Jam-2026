@@ -2,7 +2,18 @@
 
 [ext_resource type="PackedScene" uid="uid://bwwb7mvupeo0a" path="res://scenes/visual_timer.tscn" id="1_2blu7"]
 [ext_resource type="Theme" uid="uid://n67r03x14rl8" path="res://scenes/theme.tres" id="1_wyien"]
+[ext_resource type="Texture2D" uid="uid://eycfn2bs5jpc" path="res://scenes/copper.tres" id="2_xqmpp"]
 [ext_resource type="PackedScene" uid="uid://5kmwpc4uvmji" path="res://scenes/play_area.tscn" id="3_5snyb"]
+[ext_resource type="Texture2D" uid="uid://b11hpoc1cg4ce" path="res://assets/equals.png" id="3_j7t4f"]
+[ext_resource type="Texture2D" uid="uid://d4bq7wt08ioa7" path="res://scenes/air.tres" id="4_2tqr2"]
+[ext_resource type="Texture2D" uid="uid://cb6tqrcu4sxsn" path="res://assets/plus.png" id="5_tjote"]
+[ext_resource type="Texture2D" uid="uid://bhiknbl3eiu76" path="res://scenes/earth.tres" id="6_p26jq"]
+[ext_resource type="Texture2D" uid="uid://b6ppl3mgxseqi" path="res://scenes/iron.tres" id="7_hnitv"]
+[ext_resource type="Texture2D" uid="uid://c681mb35ljnm0" path="res://scenes/fire.tres" id="8_rbk1g"]
+[ext_resource type="Texture2D" uid="uid://bsallyycddyat" path="res://scenes/water.tres" id="9_2hbnu"]
+[ext_resource type="Texture2D" uid="uid://fv20ay682rqo" path="res://scenes/silver.tres" id="10_vgije"]
+[ext_resource type="Texture2D" uid="uid://e8xwo15uqpxn" path="res://scenes/gold.tres" id="11_2tqr2"]
+[ext_resource type="Texture2D" uid="uid://dl22jy3e2qk27" path="res://scenes/quintessence.tres" id="12_tjote"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5snyb"]
 bg_color = Color(0.73192763, 0.71364886, 0.8549257, 1)
@@ -48,22 +59,197 @@ text = "Goal:"
 [node name="Combos" type="Panel" parent="HBox/Left Panel" unique_id=1690341314]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_xqmpp")
 
 [node name="MarginContainer" type="MarginContainer" parent="HBox/Left Panel/Combos" unique_id=415025116]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBox/Left Panel/Combos/MarginContainer" unique_id=155958383]
 layout_mode = 2
+size_flags_horizontal = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBox/Left Panel/Combos/MarginContainer/VBoxContainer" unique_id=1102403909]
+[node name="Copper" type="HBoxContainer" parent="HBox/Left Panel/Combos/MarginContainer/VBoxContainer" unique_id=1102403909]
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="HBox/Left Panel/Combos/MarginContainer/VBoxContainer" unique_id=1488390253]
+[node name="Copper" type="TextureRect" parent="HBox/Left Panel/Combos/MarginContainer/VBoxContainer/Copper" unique_id=889056803]
 layout_mode = 2
-text = "Aspect Combos:"
+size_flags_horizontal = 3
+texture = ExtResource("2_xqmpp")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="Equals" type="TextureRect" parent="HBox/Left Panel/Combos/MarginContainer/VBoxContainer/Copper" unique_id=60707353]
+layout_mode = 2
+texture = ExtResource("3_j7t4f")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="Air" type="TextureRect" parent="HBox/Left Panel/Combos/MarginContainer/VBoxContainer/Copper" unique_id=1045664327]
+layout_mode = 2
+texture = ExtResource("4_2tqr2")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="Plus" type="TextureRect" parent="HBox/Left Panel/Combos/MarginContainer/VBoxContainer/Copper" unique_id=405779114]
+layout_mode = 2
+texture = ExtResource("5_tjote")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="Earth" type="TextureRect" parent="HBox/Left Panel/Combos/MarginContainer/VBoxContainer/Copper" unique_id=726417537]
+layout_mode = 2
+texture = ExtResource("6_p26jq")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="Iron" type="HBoxContainer" parent="HBox/Left Panel/Combos/MarginContainer/VBoxContainer" unique_id=648239741]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Iron" type="TextureRect" parent="HBox/Left Panel/Combos/MarginContainer/VBoxContainer/Iron" unique_id=2018791706]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("7_hnitv")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="Equals" type="TextureRect" parent="HBox/Left Panel/Combos/MarginContainer/VBoxContainer/Iron" unique_id=1591856025]
+layout_mode = 2
+texture = ExtResource("3_j7t4f")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="Water" type="TextureRect" parent="HBox/Left Panel/Combos/MarginContainer/VBoxContainer/Iron" unique_id=1695708986]
+layout_mode = 2
+texture = ExtResource("9_2hbnu")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="Plus" type="TextureRect" parent="HBox/Left Panel/Combos/MarginContainer/VBoxContainer/Iron" unique_id=1489331486]
+layout_mode = 2
+texture = ExtResource("5_tjote")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="Fire" type="TextureRect" parent="HBox/Left Panel/Combos/MarginContainer/VBoxContainer/Iron" unique_id=1282637805]
+layout_mode = 2
+texture = ExtResource("8_rbk1g")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="Silver" type="HBoxContainer" parent="HBox/Left Panel/Combos/MarginContainer/VBoxContainer" unique_id=1523208183]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Silver" type="TextureRect" parent="HBox/Left Panel/Combos/MarginContainer/VBoxContainer/Silver" unique_id=1267447714]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_vgije")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="Equals" type="TextureRect" parent="HBox/Left Panel/Combos/MarginContainer/VBoxContainer/Silver" unique_id=2076867322]
+layout_mode = 2
+texture = ExtResource("3_j7t4f")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="Air" type="TextureRect" parent="HBox/Left Panel/Combos/MarginContainer/VBoxContainer/Silver" unique_id=1872428514]
+layout_mode = 2
+texture = ExtResource("4_2tqr2")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="Plus" type="TextureRect" parent="HBox/Left Panel/Combos/MarginContainer/VBoxContainer/Silver" unique_id=1560787399]
+layout_mode = 2
+texture = ExtResource("5_tjote")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="Iron" type="TextureRect" parent="HBox/Left Panel/Combos/MarginContainer/VBoxContainer/Silver" unique_id=458243787]
+layout_mode = 2
+texture = ExtResource("7_hnitv")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="Gold" type="HBoxContainer" parent="HBox/Left Panel/Combos/MarginContainer/VBoxContainer" unique_id=902478555]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Gold" type="TextureRect" parent="HBox/Left Panel/Combos/MarginContainer/VBoxContainer/Gold" unique_id=1217668924]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("11_2tqr2")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="Equals" type="TextureRect" parent="HBox/Left Panel/Combos/MarginContainer/VBoxContainer/Gold" unique_id=2115854942]
+layout_mode = 2
+texture = ExtResource("3_j7t4f")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="Copper" type="TextureRect" parent="HBox/Left Panel/Combos/MarginContainer/VBoxContainer/Gold" unique_id=224857335]
+layout_mode = 2
+texture = ExtResource("2_xqmpp")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="Plus" type="TextureRect" parent="HBox/Left Panel/Combos/MarginContainer/VBoxContainer/Gold" unique_id=1736932266]
+layout_mode = 2
+texture = ExtResource("5_tjote")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="Fire" type="TextureRect" parent="HBox/Left Panel/Combos/MarginContainer/VBoxContainer/Gold" unique_id=1465804293]
+layout_mode = 2
+texture = ExtResource("8_rbk1g")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="Quintessence" type="HBoxContainer" parent="HBox/Left Panel/Combos/MarginContainer/VBoxContainer" unique_id=1143766678]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Quintessence" type="TextureRect" parent="HBox/Left Panel/Combos/MarginContainer/VBoxContainer/Quintessence" unique_id=1939547163]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("12_tjote")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="Equals" type="TextureRect" parent="HBox/Left Panel/Combos/MarginContainer/VBoxContainer/Quintessence" unique_id=480732462]
+layout_mode = 2
+texture = ExtResource("3_j7t4f")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="Gold" type="TextureRect" parent="HBox/Left Panel/Combos/MarginContainer/VBoxContainer/Quintessence" unique_id=460060681]
+layout_mode = 2
+texture = ExtResource("11_2tqr2")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="Plus" type="TextureRect" parent="HBox/Left Panel/Combos/MarginContainer/VBoxContainer/Quintessence" unique_id=815226305]
+layout_mode = 2
+texture = ExtResource("5_tjote")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="Silver" type="TextureRect" parent="HBox/Left Panel/Combos/MarginContainer/VBoxContainer/Quintessence" unique_id=1840160370]
+layout_mode = 2
+texture = ExtResource("10_vgije")
+expand_mode = 3
+stretch_mode = 6
 
 [node name="Right Panel" type="VBoxContainer" parent="HBox" unique_id=1295158918]
 layout_mode = 2
