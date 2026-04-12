@@ -9,6 +9,7 @@ extends SubViewport
 @onready var orb: AnimatedSprite2D = $Orb
 
 @onready var progress_ratio: float = 0.0
+@onready var warning_sent: bool = false
 
 @export var bounce_height: float = 40.0
 @export var bounce_frequency: float = 100.0
@@ -29,6 +30,12 @@ func _process(delta: float) -> void:
 	demon_follower.progress_ratio = progress_ratio
 	demon.global_position.y = demon_follower.global_position.y - \
 		(bounce_height * abs(sin(progress_ratio * bounce_frequency)))
+		
+	# if demon is 80% to the conjerer, send warning
+	if progress_ratio >= 0.8 and not warning_sent:
+		SignalBus.log_event.emit("[color=red]Times running out![/color]")
+		warning_sent = true # trigger once per demon
+		
 		
 func explode_enemy() -> void:
 	explosion.global_position = demon.global_position
