@@ -12,7 +12,7 @@ extends SubViewport
 @onready var warning_sent: bool = false
 
 @export var bounce_height: float = 40.0
-@export var bounce_frequency: float = 100.0
+@export var bounce_frequency: float = 200.0
 
 func _ready() -> void:
 	explosion.visible = false
