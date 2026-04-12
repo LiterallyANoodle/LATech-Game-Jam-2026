@@ -17,6 +17,11 @@ func _ready() -> void:
 	explosion.visible = false
 	timer.wait_time = constants.ROUND_TIME
 	timer.start()
+	
+	# Log initial appearance
+	await get_tree().process_frame
+	SignalBus.log_event.emit("Demon appears!!!")
+	
 	SignalBus.MOLECULE_CORRECT.connect(_on_molecule_correct)
 
 func _process(delta: float) -> void:
@@ -28,6 +33,11 @@ func _process(delta: float) -> void:
 func explode_enemy() -> void:
 	explosion.global_position = demon.global_position
 	timer.start()
+	
+	# Log respawn appearance
+	await get_tree().process_frame
+	SignalBus.log_event.emit("Demon appears!!!")
+	
 	explosion.visible = true
 	explosion.set_frame(0)
 	explosion.play()
